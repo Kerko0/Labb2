@@ -4,22 +4,37 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using ExtensionMethods;
 
-namespace Labb2
+namespace ShapeGenerator
 {
     internal class Triangle : Shape2D
     {
-        public override float Area { get { return 0; } }
-        public override float Circumference { get { return 0; } }
+        public override float Area 
+        { 
+            get { 
+                
+                return 0.5f * Math.Abs(A.X * (B.Y - C.Y) + B.X * (C.Y - A.Y) + C.X * (A.Y - B.Y)); 
+            }     
+        }
+        public override float Circumference 
+        {   
+            get { 
+                               
+                return MathF.Round(MathF.Sqrt(MathF.Pow(B.X - A.X, 2) + MathF.Pow(B.Y - A.Y, 2)) + 
+                       MathF.Sqrt(MathF.Pow(C.X - B.X, 2) + MathF.Pow(C.Y - B.Y, 2)) +
+                       MathF.Sqrt(MathF.Pow(A.X - C.X, 2) + MathF.Pow(A.Y - C.Y, 2)), 2);                          
+            }       
+        }
         public override Vector3 Center 
         {
             get { 
 
                 return new Vector3((A.X + B.X + C.X) / 3, (A.Y + B.Y + C.Y) / 3, 0f);
-            } 
-        
+            }      
         }
 
+        Random random = new Random();
         private Vector2 A;
         private Vector2 B;
         private Vector2 C;
@@ -29,6 +44,15 @@ namespace Labb2
             B = point2;
             C = point3;
         }
+
+        public Triangle(Vector2 center)
+        {
+            A = Vector2Ex.RandomVector2Value();
+            B = Vector2Ex.RandomVector2Value();
+            C = new Vector2((center.X * 3) - (A.X + B.X), (center.Y * 3) - (A.Y + B.Y));
+        }
+
+
 
         public override string ToString()
         {

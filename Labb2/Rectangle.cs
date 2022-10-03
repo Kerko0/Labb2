@@ -6,7 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb2
+namespace ShapeGenerator
 {
     internal class Rectangle : Shape2D
     {
@@ -43,11 +43,11 @@ namespace Labb2
         {
             if(IsSquare)
             {
-                return $"square @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";
+                return $"Square @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";
             }
             else
             {
-                return $"rectangle @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";
+                return $"Rectangle @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";
             }
             
         }

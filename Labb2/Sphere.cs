@@ -5,13 +5,14 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb2
+namespace ShapeGenerator
 {
     internal class Sphere : Shape3D
     {
-        public override float Area { get { return 0; } }
+        public override float Area { get { return MathF.Round(4 * MathF.PI * MathF.Pow(_radius, 2), 2); } }
         public override Vector3 Center { get { return _center; } }
-        public override float Volume { get { return 0; } }
+        //Formeln är egentligen (4/3) * PI * r^3 men paranteserna funkar inte så jag måste skriva vad 4/3 blir
+        public override float Volume { get { return MathF.Round(1.3333333333333333333333333333333f * MathF.PI * MathF.Pow(_radius, 3), 2); } }
         public float Radius { get { return _radius; } }
 
         private float _radius;

@@ -5,12 +5,12 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb2
+namespace ShapeGenerator
 {
     public class Circle : Shape2D
     {
-        public override float Area { get { return (float)Math.PI * (float)Math.Pow(_radius, 2); } }
-        public override float Circumference { get { return (float)Math.PI * 2 * _radius; } }
+        public override float Area { get { return MathF.PI * MathF.Pow(_radius, 2); } }
+        public override float Circumference { get { return MathF.PI * 2 * _radius; } }
         public override Vector3 Center { get { return _center; } }
         public float Radius { get { return _radius; } }
 

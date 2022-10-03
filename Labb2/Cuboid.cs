@@ -6,12 +6,12 @@ using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labb2
+namespace ShapeGenerator
 {
     public class Cuboid : Shape3D
     {
-        public override float Area { get { return 0; } }
-        public override float Volume { get { return 0; } }
+        public override float Area { get { return MathF.Round(2 * ((_length * _width) + (_length * _height) + (_width * _height)), 2); } }
+        public override float Volume { get { return _length * _width * _height; } }
         public override Vector3 Center { get { return _center; } }
 
         public bool IsCube => _width == _height && _width == _length && _height == _length ? true : false;
@@ -35,23 +35,23 @@ namespace Labb2
             _height = size.Y;
             _length = size.Z;
         }
-        public Cuboid(Vector3 center, float width)
+        public Cuboid(Vector3 center, float size)
             : this(center)
         {
-            _width = width;
-            _height = width;
-            _length = width;
+            _width = size;
+            _height = size;
+            _length = size;
         }
 
         public override string ToString()
         {
             if (IsCube)
             {
-                return $"cube @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";
+                return $"Cube @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";
             }
             else
             {
-                return $"cuboid @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";
+                return $"Cuboid @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";
             }
 
         }
