@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace ExtensionMethods
+namespace ShapeGenerator
 {
     public static class Vector2Ex
     {
@@ -15,8 +15,8 @@ namespace ExtensionMethods
             return new Vector2(rand.Next(1, 10), rand.Next(1, 10));
         }
 
-        
-    } 
+
+    }
 
     public static class Vector3Ex
     {

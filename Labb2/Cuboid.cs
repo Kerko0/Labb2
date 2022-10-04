@@ -13,14 +13,13 @@ namespace ShapeGenerator
         public override float Area { get { return MathF.Round(2 * ((_length * _width) + (_length * _height) + (_width * _height)), 2); } }
         public override float Volume { get { return _length * _width * _height; } }
         public override Vector3 Center { get { return _center; } }
-
         public bool IsCube => _width == _height && _width == _length && _height == _length ? true : false;
 
+        private string _isCube => _width == _height && _width == _length && _height == _length ? "Cube" : "Cuboid";
         private float _width;
         private float _height;
         private float _length;
         private Vector3 _center;
-
 
         public Cuboid(Vector3 center)
         {
@@ -44,16 +43,8 @@ namespace ShapeGenerator
         }
 
         public override string ToString()
-        {
-            if (IsCube)
-            {
-                return $"Cube @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";
-            }
-            else
-            {
-                return $"Cuboid @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";
-            }
-
+        {                      
+           return $"{_isCube} @({_center.X}, {_center.Y}, {_center.Z}): w = {_width}, h = {_height}, l = {_length}";                  
         }
     }
 }

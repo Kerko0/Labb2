@@ -7,7 +7,6 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Xml;
-using ExtensionMethods;
 
 namespace ShapeGenerator
 {
@@ -18,7 +17,7 @@ namespace ShapeGenerator
 
 
         static Random rand = new Random();
-        enum Shapes
+        public enum Shapes
         {
             Circle,
             Rectangle,

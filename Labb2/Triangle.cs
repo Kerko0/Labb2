@@ -4,11 +4,10 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using ExtensionMethods;
 
 namespace ShapeGenerator
 {
-    internal class Triangle : Shape2D
+    public class Triangle : Shape2D
     {
         public override float Area 
         { 

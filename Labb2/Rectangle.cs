@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace ShapeGenerator
 {
-    internal class Rectangle : Shape2D
+    public class Rectangle : Shape2D
     {
         public override float Area { get { return _width * _height; } }
         public override float Circumference { get { return (_width * 2) + (_height * 2); } }
         public override Vector3 Center { get { return _center; } }
-
         public bool IsSquare => _width == _height ? true : false;
 
+        private string _isSquare => _width == _height ? "Square" : "Rectangle";
         private float _width;
         private float _height;
         private Vector3 _center;
@@ -40,16 +40,8 @@ namespace ShapeGenerator
         }
 
         public override string ToString()
-        {
-            if(IsSquare)
-            {
-                return $"Square @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";
-            }
-            else
-            {
-                return $"Rectangle @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";
-            }
-            
+        {                   
+           return $"{_isSquare} @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";                    
         }
 
     }

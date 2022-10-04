@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShapeGenerator
 {
-    internal class Sphere : Shape3D
+    public class Sphere : Shape3D
     {
         public override float Area { get { return MathF.Round(4 * MathF.PI * MathF.Pow(_radius, 2), 2); } }
         public override Vector3 Center { get { return _center; } }
