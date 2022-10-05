@@ -29,32 +29,45 @@ namespace ShapeGenerator
         {
             return GenerateShape(new Vector3(rand.Next(1,10), rand.Next(1,10), rand.Next(1,10)));
         }
-
+        
         public static Shape GenerateShape(Vector3 center)
         {
-            Shapes shapes = (Shapes)rand.Next(Enum.GetNames(typeof(Shapes)).Length);
+            Shapes randomShape = (Shapes)rand.Next(Enum.GetNames(typeof(Shapes)).Length);   
+            
+            Dictionary<Shapes, Shape> shapes = new Dictionary<Shapes, Shape>();
+            shapes[Shapes.Circle] = GenerateCircle(center);
+            shapes[Shapes.Rectangle] = GenerateRectangle(center);
+            shapes[Shapes.Triangle] = GenerateTriangle(center);
+            shapes[Shapes.Sphere] = GenerateSphere(center);
+            shapes[Shapes.Cuboid] = GenerateCuboid(center);
 
-            switch(shapes)
-            {
-                case Shapes.Circle:
-                    return new Circle(Vector2Ex.ConvertToVector2(center), rand.Next(1, 10));       
-                    
-                case Shapes.Rectangle:
-                    return new Rectangle(Vector2Ex.ConvertToVector2(center), Vector2Ex.RandomVector2Value());
+            return shapes[randomShape];
 
-                case Shapes.Triangle:
-                    return new Triangle(Vector2Ex.ConvertToVector2(center));
+        }     
+        
+        public static Shape GenerateCircle(Vector3 center)
+        {
+            return new Circle(Vector2Ex.ConvertToVector2(center), rand.Next(1, 10));
+        }
 
-                case Shapes.Sphere:
-                    return new Sphere(center, rand.Next(1, 10));
+        public static Shape GenerateRectangle(Vector3 center)
+        {
+            return new Rectangle(Vector2Ex.ConvertToVector2(center), Vector2Ex.RandomVector2Value());
+        }
 
-                case Shapes.Cuboid:
-                    return new Cuboid(center, Vector3Ex.RandomVector3Value());
+        public static Shape GenerateTriangle(Vector3 center)
+        {
+            return new Triangle(Vector2Ex.ConvertToVector2(center));
+        }
 
-                default:
-                    return new Circle(new Vector2(0,0), 0);
-            }
+        public static Shape GenerateSphere(Vector3 center)
+        {
+            return new Sphere(center, rand.Next(1, 10));
+        }
 
-        }        
+        public static Shape GenerateCuboid(Vector3 center)
+        {
+            return new Cuboid(center, Vector3Ex.RandomVector3Value());
+        }
     }   
 }
