@@ -4,7 +4,7 @@ Shape[] shapes = new Shape[20];
 
 Console.WriteLine("Generated Shapes: ");
 
-for (int i = 0; i < 20; i++)
+for (int i = 0; i < shapes.Length; i++)
 {
     shapes[i] = Shape.GenerateShape();
     Console.WriteLine(shapes[i].ToString());
@@ -33,8 +33,8 @@ static double AverageArea(Shape[] shapes)
     {
         totalArea += shape.Area;
     }
-
-    return Math.Round(totalArea / 20, 2);
+   
+    return Math.Round(totalArea / shapes.Length, 2);
 }
 
 static double TotalTrianglePerimeterSum(Shape[] shapes)
@@ -82,9 +82,8 @@ static string GetMostFrequentShapeType(Shape[] shapes)
     var sortedFrequency = frequency.OrderBy(x => x.Value).ToList();
     sortedFrequency.Reverse();
 
-    string shapeName = sortedFrequency[0].ToString().Replace("[ShapeGenerator.", "");
-    char amount = shapeName[shapeName.Length - 2];
-    shapeName = shapeName.Remove(shapeName.Length - 4, 4);
+    string shapeName = sortedFrequency[0].Key.ToString().Replace("ShapeGenerator.", "");
+    string amount = sortedFrequency[0].Value.ToString();
 
-    return  $"{shapeName}: {amount} found in list.";
+    return $"{shapeName}: {amount} found in list.";
 }

@@ -11,8 +11,10 @@ namespace ShapeGenerator
     {
         public override float Area { get { return MathF.Round(4 * MathF.PI * MathF.Pow(_radius, 2), 2); } }
         public override Vector3 Center { get { return _center; } }
-        //Formeln är egentligen (4/3) * PI * r^3 men paranteserna funkar inte så jag måste skriva vad 4/3 blir
-        public override float Volume { get { return MathF.Round(1.3333333333333333333333333333333f * MathF.PI * MathF.Pow(_radius, 3), 2); } }
+        
+        float fourDividedByThree = 4 / 3; //Formeln är egentligen (4/3) * PI * r^3 men paranteserna funkar inte så jag måste göra en separat variabel för den.
+        public override float Volume { get { return MathF.Round(fourDividedByThree * MathF.PI * MathF.Pow(_radius, 3), 2); } }
+
         public float Radius { get { return _radius; } }
 
         private float _radius;

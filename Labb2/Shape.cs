@@ -27,7 +27,7 @@ namespace ShapeGenerator
         }
         public static Shape GenerateShape()
         {
-            return GenerateShape(new Vector3(rand.Next(1,10), rand.Next(1,10), rand.Next(1,10)));
+            return GenerateShape(Vector3Ex.RandomVector3Value(1,10));
         }
         
         public static Shape GenerateShape(Vector3 center)
@@ -42,7 +42,6 @@ namespace ShapeGenerator
             shapes[Shapes.Cuboid] = GenerateCuboid(center);
 
             return shapes[randomShape];
-
         }     
         
         public static Shape GenerateCircle(Vector3 center)
@@ -52,7 +51,7 @@ namespace ShapeGenerator
 
         public static Shape GenerateRectangle(Vector3 center)
         {
-            return new Rectangle(Vector2Ex.ConvertToVector2(center), Vector2Ex.RandomVector2Value());
+            return new Rectangle(Vector2Ex.ConvertToVector2(center), Vector2Ex.RandomVector2Value(1,10));
         }
 
         public static Shape GenerateTriangle(Vector3 center)
@@ -67,7 +66,7 @@ namespace ShapeGenerator
 
         public static Shape GenerateCuboid(Vector3 center)
         {
-            return new Cuboid(center, Vector3Ex.RandomVector3Value());
+            return new Cuboid(center, Vector3Ex.RandomVector3Value(1,10));
         }
     }   
 }

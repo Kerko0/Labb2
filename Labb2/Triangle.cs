@@ -19,10 +19,12 @@ namespace ShapeGenerator
         public override float Circumference 
         {   
             get { 
-                               
-                return MathF.Round(MathF.Sqrt(MathF.Pow(B.X - A.X, 2) + MathF.Pow(B.Y - A.Y, 2)) + 
+                
+                return MathF.Round(
+                       MathF.Sqrt(MathF.Pow(B.X - A.X, 2) + MathF.Pow(B.Y - A.Y, 2)) + 
                        MathF.Sqrt(MathF.Pow(C.X - B.X, 2) + MathF.Pow(C.Y - B.Y, 2)) +
-                       MathF.Sqrt(MathF.Pow(A.X - C.X, 2) + MathF.Pow(A.Y - C.Y, 2)), 2);                          
+                       MathF.Sqrt(MathF.Pow(A.X - C.X, 2) + MathF.Pow(A.Y - C.Y, 2)),
+                       2);                          
             }       
         }
         public override Vector3 Center 
@@ -33,7 +35,6 @@ namespace ShapeGenerator
             }      
         }
 
-        Random random = new Random();
         private Vector2 A;
         private Vector2 B;
         private Vector2 C;
@@ -46,8 +47,8 @@ namespace ShapeGenerator
 
         public Triangle(Vector2 center)
         {
-            A = Vector2Ex.RandomVector2Value();
-            B = Vector2Ex.RandomVector2Value();
+            A = Vector2Ex.RandomVector2Value(1,10);
+            B = Vector2Ex.RandomVector2Value(1,10);
             C = new Vector2((center.X * 3) - (A.X + B.X), (center.Y * 3) - (A.Y + B.Y));
         }
 
