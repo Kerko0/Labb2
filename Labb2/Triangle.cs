@@ -20,11 +20,9 @@ namespace ShapeGenerator
         {   
             get { 
                 
-                return MathF.Round(
-                       MathF.Sqrt(MathF.Pow(B.X - A.X, 2) + MathF.Pow(B.Y - A.Y, 2)) + 
+                return MathF.Sqrt(MathF.Pow(B.X - A.X, 2) + MathF.Pow(B.Y - A.Y, 2)) + 
                        MathF.Sqrt(MathF.Pow(C.X - B.X, 2) + MathF.Pow(C.Y - B.Y, 2)) +
-                       MathF.Sqrt(MathF.Pow(A.X - C.X, 2) + MathF.Pow(A.Y - C.Y, 2)),
-                       2);                          
+                       MathF.Sqrt(MathF.Pow(A.X - C.X, 2) + MathF.Pow(A.Y - C.Y, 2));                          
             }       
         }
         public override Vector3 Center 

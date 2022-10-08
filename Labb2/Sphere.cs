@@ -9,11 +9,11 @@ namespace ShapeGenerator
 {
     public class Sphere : Shape3D
     {
-        public override float Area { get { return MathF.Round(4 * MathF.PI * MathF.Pow(_radius, 2), 2); } }
+        public override float Area { get { return 4 * MathF.PI * MathF.Pow(_radius, 2); } }
         public override Vector3 Center { get { return _center; } }
         
-        float fourDividedByThree = 4 / 3; //Formeln är egentligen (4/3) * PI * r^3 men paranteserna funkar inte så jag måste göra en separat variabel för den.
-        public override float Volume { get { return MathF.Round(fourDividedByThree * MathF.PI * MathF.Pow(_radius, 3), 2); } }
+        double fourDividedByThree = 4.0 / 3.0; //Formeln är egentligen (4/3) * PI * r^3 men paranteserna funkar inte så jag måste göra en separat variabel för den.
+        public override float Volume { get { return (float)(fourDividedByThree * Math.PI * Math.Pow(_radius, 3)); } }
 
         public float Radius { get { return _radius; } }
 

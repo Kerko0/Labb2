@@ -54,6 +54,11 @@ namespace ShapeGenerator
             return new Rectangle(Vector2Ex.ConvertToVector2(center), Vector2Ex.RandomVector2Value(1,10));
         }
 
+        public static Shape GenerateSquare(Vector3 center)
+        {
+            return new Rectangle(Vector2Ex.ConvertToVector2(center), rand.Next(1, 10));
+        }
+
         public static Shape GenerateTriangle(Vector3 center)
         {
             return new Triangle(Vector2Ex.ConvertToVector2(center));
@@ -67,6 +72,11 @@ namespace ShapeGenerator
         public static Shape GenerateCuboid(Vector3 center)
         {
             return new Cuboid(center, Vector3Ex.RandomVector3Value(1,10));
+        }
+
+        public static Shape GenerateCube(Vector3 center)
+        {
+            return new Cuboid(center, rand.Next(1,10));
         }
     }   
 }

@@ -39,20 +39,14 @@ static double AverageArea(Shape[] shapes)
 
 static double TotalTrianglePerimeterSum(Shape[] shapes)
 {
-    float totalPerimeter = 0;
-    List <Triangle> triangles = new List<Triangle>();
+    double totalPerimeter = 0;
 
     foreach (Shape shape in shapes)
     {
-        if(shape is Triangle)
+        if(shape is Triangle triangle)
         {
-            triangles.Add((Triangle)shape);
+            totalPerimeter += triangle.Circumference;
         }
-    }
-
-    foreach(Triangle triangle in triangles)
-    {
-        totalPerimeter += triangle.Circumference;
     }
 
     return Math.Round(totalPerimeter, 2);
@@ -62,6 +56,7 @@ static double TotalTrianglePerimeterSum(Shape[] shapes)
 static Shape3D LargestVolume(Shape[] shapes)
 {
     List <Shape3D> shapes3D = new List<Shape3D>();
+
     foreach (Shape shape in shapes)
     {
         if (shape is Shape3D)
@@ -69,9 +64,8 @@ static Shape3D LargestVolume(Shape[] shapes)
             shapes3D.Add((Shape3D)shape);
         }
     }
-    
-    List<Shape3D> sortedList = shapes3D.OrderBy(Shape3D => Shape3D.Volume).ToList();
-    sortedList.Reverse();
+
+    List<Shape3D> sortedList = shapes3D.OrderByDescending(shape3D => shape3D.Volume).ToList();
 
     return sortedList[0];
 }
@@ -79,8 +73,7 @@ static Shape3D LargestVolume(Shape[] shapes)
 static string GetMostFrequentShapeType(Shape[] shapes)
 {
     var frequency = shapes.GroupBy(shape => shape.GetType()).ToDictionary(shape => shape.Key, x => x.Count());
-    var sortedFrequency = frequency.OrderBy(x => x.Value).ToList();
-    sortedFrequency.Reverse();
+    var sortedFrequency = frequency.OrderByDescending(x => x.Value).ToList();
 
     string shapeName = sortedFrequency[0].Key.ToString().Replace("ShapeGenerator.", "");
     string amount = sortedFrequency[0].Value.ToString();
