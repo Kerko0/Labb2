@@ -68,22 +68,22 @@ namespace ShapeGenerator
         
         public static Shape GenerateCircle(Vector3 center)
         {
-            return new Circle(Vector3Extensions.ConvertToVector2(center), rand.Next(1, 10));
+            return new Circle(center.ConvertToVector2(), rand.Next(1, 10));
         }
 
         public static Shape GenerateRectangle(Vector3 center)
         {
-            return new Rectangle(Vector3Extensions.ConvertToVector2(center), RandomVector.RandomVector2Value(1,10));
+            return new Rectangle(center.ConvertToVector2(), RandomVector.RandomVector2Value(1,10));
         }
 
         public static Shape GenerateSquare(Vector3 center)
         {
-            return new Rectangle(Vector3Extensions.ConvertToVector2(center), rand.Next(1, 10));
+            return new Rectangle(center.ConvertToVector2(), rand.Next(1, 10));
         }
 
         public static Shape GenerateTriangle(Vector3 center)
         {
-            return new Triangle(Vector3Extensions.ConvertToVector2(center));
+            return new Triangle(center.ConvertToVector2());
         }
 
         public static Shape GenerateSphere(Vector3 center)

@@ -1,4 +1,5 @@
 ﻿using ShapeGenerator;
+using System.Numerics;
 
 Shape[] shapes = new Shape[20];
 
