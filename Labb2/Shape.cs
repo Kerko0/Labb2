@@ -7,6 +7,8 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Xml;
+using static ShapeGenerator.Shape;
+using System.Runtime.Intrinsics;
 
 namespace ShapeGenerator
 {
@@ -17,51 +19,71 @@ namespace ShapeGenerator
 
 
         static Random rand = new Random();
-        public enum Shapes
+        private enum Shapes
         {
             Circle,
             Rectangle,
+            Square,
             Triangle,
             Sphere,
-            Cuboid
+            Cuboid,
+            Cube
         }
         public static Shape GenerateShape()
         {
-            return GenerateShape(Vector3Ex.RandomVector3Value(1,10));
+            return GenerateShape(RandomVector.RandomVector3Value(1,10));
         }
         
         public static Shape GenerateShape(Vector3 center)
         {
-            Shapes randomShape = (Shapes)rand.Next(Enum.GetNames(typeof(Shapes)).Length);   
-            
-            Dictionary<Shapes, Shape> shapes = new Dictionary<Shapes, Shape>();
-            shapes[Shapes.Circle] = GenerateCircle(center);
-            shapes[Shapes.Rectangle] = GenerateRectangle(center);
-            shapes[Shapes.Triangle] = GenerateTriangle(center);
-            shapes[Shapes.Sphere] = GenerateSphere(center);
-            shapes[Shapes.Cuboid] = GenerateCuboid(center);
+            Shapes randomShape = (Shapes)rand.Next(Enum.GetNames(typeof(Shapes)).Length);
 
-            return shapes[randomShape];
+            switch (randomShape)
+            {
+                case Shapes.Circle:
+                    return GenerateCircle(center);
+
+                case Shapes.Rectangle:
+                    return GenerateRectangle(center);
+
+                case Shapes.Square:
+                    return GenerateSquare(center);
+
+                case Shapes.Triangle:
+                    return GenerateTriangle(center);
+
+                case Shapes.Sphere:
+                    return GenerateSphere(center);
+
+                case Shapes.Cuboid:
+                    return GenerateCuboid(center);
+
+                case Shapes.Cube:
+                    return GenerateCube(center);
+
+                default:
+                    return null!;
+            }
         }     
         
         public static Shape GenerateCircle(Vector3 center)
         {
-            return new Circle(Vector2Ex.ConvertToVector2(center), rand.Next(1, 10));
+            return new Circle(Vector3Extensions.ConvertToVector2(center), rand.Next(1, 10));
         }
 
         public static Shape GenerateRectangle(Vector3 center)
         {
-            return new Rectangle(Vector2Ex.ConvertToVector2(center), Vector2Ex.RandomVector2Value(1,10));
+            return new Rectangle(Vector3Extensions.ConvertToVector2(center), RandomVector.RandomVector2Value(1,10));
         }
 
         public static Shape GenerateSquare(Vector3 center)
         {
-            return new Rectangle(Vector2Ex.ConvertToVector2(center), rand.Next(1, 10));
+            return new Rectangle(Vector3Extensions.ConvertToVector2(center), rand.Next(1, 10));
         }
 
         public static Shape GenerateTriangle(Vector3 center)
         {
-            return new Triangle(Vector2Ex.ConvertToVector2(center));
+            return new Triangle(Vector3Extensions.ConvertToVector2(center));
         }
 
         public static Shape GenerateSphere(Vector3 center)
@@ -71,7 +93,7 @@ namespace ShapeGenerator
 
         public static Shape GenerateCuboid(Vector3 center)
         {
-            return new Cuboid(center, Vector3Ex.RandomVector3Value(1,10));
+            return new Cuboid(center, RandomVector.RandomVector3Value(1,10));
         }
 
         public static Shape GenerateCube(Vector3 center)

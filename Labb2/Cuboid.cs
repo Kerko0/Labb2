@@ -15,7 +15,7 @@ namespace ShapeGenerator
         public override Vector3 Center { get { return _center; } }
         public bool IsCube => _width == _height && _width == _length && _height == _length;
 
-        private string isCube => _width == _height && _width == _length && _height == _length ? "Cube" : "Cuboid";
+        private string isCube => IsCube ? "Cube" : "Cuboid";
         private float _width;
         private float _height;
         private float _length;

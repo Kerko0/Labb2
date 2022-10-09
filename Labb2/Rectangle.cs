@@ -13,9 +13,9 @@ namespace ShapeGenerator
         public override float Area { get { return _width * _height; } }
         public override float Circumference { get { return (_width * 2) + (_height * 2); } }
         public override Vector3 Center { get { return _center; } }
-        public bool IsSquare => _width == _height ? true : false;
+        public bool IsSquare => _width == _height;
 
-        private string _isSquare => _width == _height ? "Square" : "Rectangle";
+        private string isSquare => IsSquare ? "Square" : "Rectangle";
         private float _width;
         private float _height;
         private Vector3 _center;
@@ -41,7 +41,7 @@ namespace ShapeGenerator
 
         public override string ToString()
         {                   
-           return $"{_isSquare} @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";                    
+           return $"{isSquare} @({_center.X}, {_center.Y}): w = {_width}, h = {_height}";                    
         }
 
     }

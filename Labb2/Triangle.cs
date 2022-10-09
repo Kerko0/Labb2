@@ -45,8 +45,8 @@ namespace ShapeGenerator
 
         public Triangle(Vector2 center)
         {
-            A = Vector2Ex.RandomVector2Value(1,10);
-            B = Vector2Ex.RandomVector2Value(1,10);
+            A = RandomVector.RandomVector2Value(1,10);
+            B = RandomVector.RandomVector2Value(1,10);
             C = new Vector2((center.X * 3) - (A.X + B.X), (center.Y * 3) - (A.Y + B.Y));
         }
 

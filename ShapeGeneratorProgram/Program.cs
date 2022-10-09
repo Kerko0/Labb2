@@ -26,6 +26,7 @@ Console.WriteLine("--------------------------");
 Console.WriteLine("Most frequent shape: ");
 Console.WriteLine(GetMostFrequentShapeType(shapes));
 
+
 static double AverageArea(Shape[] shapes)
 {
     float totalArea = 0;
